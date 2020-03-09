@@ -10,24 +10,32 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView celsiusTextView;
+    private TextView conversaoTextView;
     private EditText converterEditText;
-    private Button converterButton;
+    private Button converterCelsius;
+    private Button converterFahrenheit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        celsiusTextView = findViewById(R.id.saida_conversao);
+        conversaoTextView = findViewById(R.id.saida_conversao);
         converterEditText = findViewById(R.id.edit_text_graus);
-        converterButton = findViewById(R.id.button_converter);
+        converterCelsius = findViewById(R.id.button_celsius);
+        converterFahrenheit = findViewById(R.id.button_fahrenheit);
 
-        converterButton.setOnClickListener(this);
+
+        converterCelsius.setOnClickListener(this);
+        converterFahrenheit.setOnClickListener(this);
 
     }
 @Override
     public void onClick(View v){
-        converterParaCelsius();
+        if(v == converterCelsius)
+            converterParaCelsius();
+        else
+            converterParaFahrenheit();
 }
     public void converterParaCelsius(){
         double entrada;
@@ -38,7 +46,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             throw ex;
         }
         entrada = (entrada-32)/1.8;
-        celsiusTextView.setText(String.format("%.2f °C",entrada));
+       conversaoTextView.setText(String.format("%.2f °C",entrada));
+    }
+
+    public void converterParaFahrenheit(){
+        double entrada;
+        try{
+            entrada = Double.valueOf(converterEditText.getText().toString());
+        }catch (NumberFormatException ex){
+            entrada = 0;
+            throw ex;
+        }
+        entrada = 1.8*entrada+32;
+        conversaoTextView.setText(String.format("%.2f °F",entrada));
     }
 
 }

@@ -7,25 +7,39 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Conversor Temperatura" />
 
     <EditText
         android:id="@+id/edit_text_graus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Temperatura em Fahrenheit"
+        android:hint="Temperatura"
         android:gravity="center"
         android:inputType="numberDecimal"/>
 
-    <Button
-        android:id="@+id/button_converter"
+    <LinearLayout
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <Button
+        android:id="@+id/button_celsius"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Converter para Celsius"
-        android:paddingTop="30dp"/>
+        android:text="Celsius" />
+
+    <Button
+        android:id="@+id/button_fahrenheit"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fahrenheit" />
+
+</LinearLayout>
+
 
     <TextView
         android:id="@+id/saida_conversao"
@@ -35,7 +49,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:textSize="30dp"
-        android:textColor="#FF5722"/>
+        android:textColor="#F16437"/>
 
 
 
